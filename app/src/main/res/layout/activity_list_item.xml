@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:onClick="getDetails">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/title_list"
@@ -13,6 +12,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:onClick="getDetails"
         android:text="Title"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/icon"
@@ -26,6 +26,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="11dp"
+        android:onClick="onCheckBoxChecked"
         android:text="@string/completed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"

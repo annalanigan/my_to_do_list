@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +19,11 @@ import java.util.ArrayList;
  */
 
 public class ListAdapter extends ArrayAdapter<Task> {
+
+    private static class ViewHolder {
+        TextView txtName;
+        CheckBox checkBox;
+    }
 
     public ListAdapter(Context context, ArrayList<Task> list) {
         super(context, 0, list);
@@ -37,6 +43,9 @@ public class ListAdapter extends ArrayAdapter<Task> {
 
         ImageView icon = (ImageView) listItemView.findViewById(R.id.icon);
         icon.setImageResource(currentTask.getLogo());
+
+        CheckBox done = (CheckBox) listItemView.findViewById(R.id.done);
+        done.setChecked(currentTask.getCompleted());
 
         listItemView.setTag(currentTask);
 
