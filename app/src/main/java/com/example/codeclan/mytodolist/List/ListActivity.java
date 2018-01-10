@@ -62,6 +62,22 @@ public class ListActivity extends AppCompatActivity {
 
                 Log.d("LONG CLICKED",  "position is " + position);
 
+                SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+                String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
+
+                Gson gson = new Gson();
+                TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
+                ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+
+                myToDoList.remove(position);
+
+                Toast.makeText(ListActivity.this, "Item Deleted", Toast.LENGTH_LONG).show();
+
+                SharedPreferences.Editor editor = sharedPref.edit();
+
+                editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
+                editor.apply();
+
                 return true;
             }
         });
