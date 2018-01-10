@@ -12,9 +12,16 @@ import java.util.ArrayList;
 public class List implements Serializable {
 
     ArrayList<Task> list;
+    Task dummyTask;
+    Task dummyTask2;
 
     public List(){
         list = new ArrayList<Task>();
+        dummyTask = new Task("Test", "Test details", "kids");
+        dummyTask.completeTask();
+        list.add(dummyTask);
+        dummyTask2 = new Task("Test2", "Test2 details", "work");
+        list.add(dummyTask2);
         list.add(new Task("food shop", "Sainsburys", "shopping"));
         list.add(new Task("buy lighbulb", "halogen and 40 watt", "shopping"));
         list.add(new Task("build drawer unit", "kids bedroom", "home"));

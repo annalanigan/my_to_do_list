@@ -31,18 +31,20 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
+//        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+//        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
+//
+//        Gson gson = new Gson();
+//        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
+//        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
 
-        Gson gson = new Gson();
-        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
-        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+        List myToDoList = new List();
 
         // filtering for not completed
         ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
 
-        for (Task eachTask : myToDoList){
-            if (eachTask.getCompleted() == false) {
+        for (Task eachTask : myToDoList.getList()){
+            if (!eachTask.getCompleted()) {
                 listToPassToAdapter.add(eachTask);
             }
         }
@@ -94,7 +96,7 @@ public class ListActivity extends AppCompatActivity {
 
             int index = myToDoList.indexOf(task);
             task.completeTask();
-//            myToDoList.set(index, task);
+            myToDoList.set(index, task);
 
             SharedPreferences.Editor editor = sharedPref.edit();
 
