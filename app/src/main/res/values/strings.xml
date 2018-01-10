@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">To Do List</string>
+    <string name="add_item">New Task</string>
+    <string name="title">Task Title</string>
+    <string name="details">Additional Details</string>
+    <string name="dueDate">Date Due</string>
+    <string name="completed">Done</string>
+    <string name="category">Add Category</string>
+    <string name="preference_file_key">To Do List</string>
+    <string name="task_preference_key">My Tasks</string>
+    <string name="refresh">Refresh</string>
+</resources>
