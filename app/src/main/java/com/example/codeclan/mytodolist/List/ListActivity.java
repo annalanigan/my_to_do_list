@@ -32,14 +32,14 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-//        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-//        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
-//
-//        Gson gson = new Gson();
-//        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
-//        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
 
-        List myToDoList = new List();
+        Gson gson = new Gson();
+        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
+        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+
+//        List myToDoList = new List();
 
         // filtering for not completed
 //        final ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
@@ -50,19 +50,21 @@ public class ListActivity extends AppCompatActivity {
 //            }
 //        }
 
-        ListAdapter adapter = new ListAdapter(this, myToDoList.getList());
+        ListAdapter adapter = new ListAdapter(this, myToDoList);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView parent, View view, int position, long id) {
-//                Task task = listToPassToAdapter.get(position);
-//
-//                task.completeTask();
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
+        listView.setLongClickable(true);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView parent, View view, int position, long id) {
+
+                Log.d("LONG CLICKED",  "position is " + position);
+
+                return true;
+            }
+        });
 
 
         addButton = findViewById(R.id.button);
@@ -118,7 +120,7 @@ public class ListActivity extends AppCompatActivity {
 //        }
 //    }
 
-    
+
     public void onCheckBoxChecked(View listItem){
 
         boolean checked = ((CheckBox) listItem).isChecked();

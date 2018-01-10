@@ -34,6 +34,7 @@ public class ListAdapter extends ArrayAdapter<Task> {
 
         if (listItemView == null){
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_item, parent, false);
+            listItemView.setLongClickable(true);
         }
 
         Task currentTask = getItem(position);
