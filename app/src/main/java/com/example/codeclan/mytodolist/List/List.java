@@ -33,15 +33,6 @@ public class List implements Serializable {
         return new ArrayList<Task>(list);
     }
 
-    public ArrayList<Task> getFilteredList(){
-
-        ArrayList<Task> filteredList = new ArrayList<Task>
-        // for Task in myToDoList
-        // if Task.getCompleted == false
-        // listToPassTpAdapter.add(Task)
-
-        return filteredList
-    }
 
 
 }

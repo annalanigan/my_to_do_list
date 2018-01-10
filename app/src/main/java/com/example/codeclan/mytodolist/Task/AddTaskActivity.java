@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.codeclan.mytodolist.List.ListActivity;
 import com.example.codeclan.mytodolist.R;
@@ -53,6 +54,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
         editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
         editor.apply();
+
+        Toast.makeText(this, "Task Added", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);

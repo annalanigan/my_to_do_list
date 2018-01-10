@@ -39,12 +39,17 @@ public class ListActivity extends AppCompatActivity {
         ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
 
         // filtering for not completed
+        ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
 
-        ListAdapter adapter = new ListAdapter(this,myToDoList);
+        for (Task eachTask : myToDoList){
+            if (eachTask.getCompleted() == false) {
+                listToPassToAdapter.add(eachTask);
+            }
+        }
+
+        ListAdapter adapter = new ListAdapter(this, listToPassToAdapter);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
-
-        Toast.makeText(this, "Task Added", Toast.LENGTH_LONG).show();
 
         addButton = findViewById(R.id.button);
         refreshButton = findViewById(R.id.refresh);
@@ -101,7 +106,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void onRefreshButtonClicked(View view){
 
-        onCheckBoxChecked(view);
+        Toast.makeText(this, "Refreshed", Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent (this, ListActivity.class);
         startActivity(intent);
