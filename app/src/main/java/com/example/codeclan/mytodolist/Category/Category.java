@@ -14,7 +14,6 @@ public class Category implements Serializable{
 
     private String name;
     private int logo;
-    private ArrayList<Category> defaultCategories;
 
     public Category (String name, int logo){
         this.name = name;
@@ -31,16 +30,6 @@ public class Category implements Serializable{
 
     public int getLogo() {
         return logo;
-    }
-
-    public Category getCategory(String name){
-        Category result = null;
-        for (Category item : defaultCategories){
-            if (item.getName().equals(name)){
-                result = item;
-            }
-        }
-        return result;
     }
 
     public void setLogo(int logo) {
