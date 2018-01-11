@@ -24,18 +24,6 @@ public class DefaultCategories implements Serializable{
             defaultCategories.add(new Category("Garden", R.drawable.garden));
         }
 
-//        public void addCategory(Category newCategory){
-//            defaultCategories.add(newCategory);
-//        }
-//
-//        public ArrayList<Category> getDefaultList() {
-//            return new ArrayList<Category>(defaultCategories);
-//        }
-//
-//        public int getSize() {
-//            return defaultCategories.size();
-//        }
-
         public Category getCategory(String name){
             Category result = null;
             for (Category singleCategory : defaultCategories){
@@ -45,14 +33,5 @@ public class DefaultCategories implements Serializable{
             }
             return result;
     }
-
-
-//        public ArrayList<String> getCategoryNames(){
-//            ArrayList<String> names = new ArrayList<>();
-//            for (Category each : defaultCategories){
-//                names.add(each.getName());
-//            }
-//            return names;
-//        }
 
 }

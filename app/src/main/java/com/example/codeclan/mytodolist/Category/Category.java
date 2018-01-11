@@ -1,10 +1,6 @@
 package com.example.codeclan.mytodolist.Category;
 
-import com.example.codeclan.mytodolist.R;
-import com.example.codeclan.mytodolist.Task.Categories;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * Created by annalanigan on 11/01/2018.

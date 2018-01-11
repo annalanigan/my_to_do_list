@@ -23,7 +23,6 @@ public class AddTaskActivity extends AppCompatActivity {
 
     EditText titleText;
     EditText detailsText;
-//    EditText categoryChoice;
     Spinner spinner;
 
 
@@ -37,18 +36,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
     }
 
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.spinner_result);
-    }
-
-    public void addListenerOnButton() {
-        spinner = (Spinner) findViewById(R.id.spinner_result);
-    }
-
     public void onAddButtonClicked(View button){
         String newTitle = titleText.getText().toString();
         String newDetails = detailsText.getText().toString();
-
         spinner = (Spinner) findViewById(R.id.spinner_result);
         String thing = (String) spinner.getSelectedItem();
 
