@@ -16,6 +16,7 @@ import com.example.codeclan.mytodolist.R;
 import com.example.codeclan.mytodolist.Task.AddTaskActivity;
 import com.example.codeclan.mytodolist.Task.Task;
 import com.example.codeclan.mytodolist.Task.TaskActivity;
+import com.example.codeclan.mytodolist.Util.SharedPreferencesHelper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -37,6 +38,9 @@ public class ListActivity extends AppCompatActivity {
         TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
         ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
 
+//        SharedPreferencesHelper helper = new SharedPreferencesHelper();
+//        ArrayList<Task> myToDoList = helper.callTaskData(getApplicationContext());
+
         // filtering for not completed
         final ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
 
@@ -46,7 +50,7 @@ public class ListActivity extends AppCompatActivity {
             }
         }
 
-        ListAdapter adapter = new ListAdapter(this, myToDoList);
+        ListAdapter adapter = new ListAdapter(this, listToPassToAdapter);
         ListView listView = (ListView) findViewById(R.id.list_view);
         listView.setAdapter(adapter);
 
@@ -63,9 +67,10 @@ public class ListActivity extends AppCompatActivity {
                 TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
                 ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
 
-                myToDoList.remove(position);
+                Task selectedTask = myToDoList.get(position);
+                selectedTask.completeTask();
 
-                Toast.makeText(ListActivity.this, "Item Deleted", Toast.LENGTH_LONG).show();
+                Toast.makeText(ListActivity.this, "Item Completed", Toast.LENGTH_LONG).show();
 
                 SharedPreferences.Editor editor = sharedPref.edit();
 

@@ -33,24 +33,26 @@ public class SharedPreferencesHelper extends PreferenceActivity {
         return allTasks;
     }
 
-    public ArrayList<Task> callData() {
+    public ArrayList<Task> callTaskData(Context context) {
 
-        String allTasks = getPreferenceString();
+        SharedPreferences sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
 
         Gson gson = new Gson();
         TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
         ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+
         return myToDoList;
     }
 
-    public void saveData(ArrayList<Task> list){
+    public void saveTaskData(ArrayList<Task> list, String taskPreferenceKey){
 
         Gson gson = new Gson();
         SharedPreferences sharedPref = getPreferences();
 
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        editor.putString(getString(R.string.task_preference_key), gson.toJson(list));
+        editor.putString(taskPreferenceKey, gson.toJson(list));
         editor.apply();
 
     }
