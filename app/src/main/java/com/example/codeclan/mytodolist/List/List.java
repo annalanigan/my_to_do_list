@@ -1,5 +1,6 @@
 package com.example.codeclan.mytodolist.List;
 
+import com.example.codeclan.mytodolist.Task.Categories;
 import com.example.codeclan.mytodolist.Task.Task;
 
 import java.io.Serializable;
@@ -17,14 +18,14 @@ public class List implements Serializable {
 
     public List(){
         list = new ArrayList<Task>();
-        dummyTask = new Task("Test", "Test details", "kids");
+        dummyTask = new Task("Test", "Test details", Categories.KIDS);
         dummyTask.completeTask();
         list.add(dummyTask);
-        dummyTask2 = new Task("Test2", "Test2 details", "work");
+        dummyTask2 = new Task("Test2", "Test2 details", Categories.GARDEN);
         list.add(dummyTask2);
-        list.add(new Task("food shop", "Sainsburys", "shopping"));
-        list.add(new Task("buy lighbulb", "halogen and 40 watt", "shopping"));
-        list.add(new Task("build drawer unit", "kids bedroom", "home"));
+        list.add(new Task("food shop", "Sainsburys", Categories.SHOPPING));
+        list.add(new Task("buy lighbulb", "halogen and 40 watt", Categories.SHOPPING));
+        list.add(new Task("build drawer unit", "kids bedroom", Categories.HOME));
     }
 
     public void addItem(Task task){

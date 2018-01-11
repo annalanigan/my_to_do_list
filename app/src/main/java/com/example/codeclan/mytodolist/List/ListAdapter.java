@@ -45,9 +45,6 @@ public class ListAdapter extends ArrayAdapter<Task> {
         ImageView icon = (ImageView) listItemView.findViewById(R.id.icon);
         icon.setImageResource(currentTask.getLogo());
 
-        CheckBox done = (CheckBox) listItemView.findViewById(R.id.done);
-        done.setChecked(currentTask.getCompleted());
-
         listItemView.setTag(currentTask);
 
         return listItemView;

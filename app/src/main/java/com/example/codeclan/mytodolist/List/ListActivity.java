@@ -25,7 +25,6 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity {
 
     Button addButton;
-    Button refreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +41,13 @@ public class ListActivity extends AppCompatActivity {
 //        List myToDoList = new List();
 
         // filtering for not completed
-//        final ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
-//
-//        for (Task eachTask : myToDoList){
-//            if (!eachTask.getCompleted()) {
-//                listToPassToAdapter.add(eachTask);
-//            }
-//        }
+        final ArrayList<Task> listToPassToAdapter = new ArrayList<Task>();
+
+        for (Task eachTask : myToDoList){
+            if (!eachTask.getCompleted()) {
+                listToPassToAdapter.add(eachTask);
+            }
+        }
 
         ListAdapter adapter = new ListAdapter(this, myToDoList);
         ListView listView = (ListView) findViewById(R.id.list_view);
@@ -78,13 +77,16 @@ public class ListActivity extends AppCompatActivity {
                 editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
                 editor.apply();
 
+                Intent intent = new Intent (ListActivity.this, ListActivity.class);
+                startActivity(intent);
+
+
                 return true;
             }
         });
 
 
         addButton = findViewById(R.id.button);
-        refreshButton = findViewById(R.id.refresh);
     }
 
     // when clicking on the list item - takes you through to the further details
@@ -137,40 +139,14 @@ public class ListActivity extends AppCompatActivity {
 //    }
 
 
-    public void onCheckBoxChecked(View listItem){
-
-        boolean checked = ((CheckBox) listItem).isChecked();
-        Task task = (Task) listItem.getTag();
-
-        if (checked){
-
-            SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-            String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
-
-            Gson gson = new Gson();
-            TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
-            ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
-
-            int index = myToDoList.indexOf(task);
-            task.completeTask();
-//            myToDoList.set(index, task);
-
-            SharedPreferences.Editor editor = sharedPref.edit();
-
-            editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
-            editor.apply();
-
-        }
-    }
-
-    public void onRefreshButtonClicked(View view){
-
-        Toast.makeText(this, "Refreshed", Toast.LENGTH_LONG).show();
-
-        Intent intent = new Intent (this, ListActivity.class);
-        startActivity(intent);
-
-    }
+//    public void onRefreshButtonClicked(View view){
+//
+//        Toast.makeText(this, "Refreshed", Toast.LENGTH_LONG).show();
+//
+//        Intent intent = new Intent (this, ListActivity.class);
+//        startActivity(intent);
+//
+//    }
 
 
 }

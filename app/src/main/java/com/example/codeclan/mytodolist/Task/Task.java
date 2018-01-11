@@ -16,10 +16,10 @@ public class Task implements Serializable {
     private String name;
     private String details;
     private Boolean completed;
-    private String category;
+    private Categories category;
     private Date due;
 
-    public Task(String name, String details, String catName){
+    public Task(String name, String details, Categories catName){
         this.name = name;
         this.details = details;
         this.completed = false;
@@ -55,11 +55,11 @@ public class Task implements Serializable {
         this.completed = true;
     }
 
-    public String getCategory() {
+    public Categories getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Categories category) {
         this.category = category;
     }
 
@@ -72,23 +72,7 @@ public class Task implements Serializable {
     }
 
     public int getLogo() {
-        int logoLocation = 0;
-        if (category == "shopping") {
-            logoLocation = R.drawable.shopping;
-        }
-        else if (category == "home"){
-            logoLocation = R.drawable.home;
-        }
-        else if (category == "work") {
-            logoLocation = R.drawable.work;
-        }
-        else if (category == "kids"){
-            logoLocation = R.drawable.kids;
-        }
-        else {
-            logoLocation = R.drawable.other;
-        }
-        return logoLocation;
+        return this.category.getLogo();
     }
 
 }

@@ -9,4 +9,14 @@
     <string name="preference_file_key">To Do List</string>
     <string name="task_preference_key">My Tasks</string>
     <string name="refresh">Refresh</string>
+    <string name="spinner_prompt">Please Select a Category</string>
+
+    <string-array name="category_names">
+        <item>Work</item>
+        <item>Home</item>
+        <item>Kids</item>
+        <item>Shopping</item>
+        <item>Packing</item>
+        <item>Garden</item>
+    </string-array>
 </resources>
