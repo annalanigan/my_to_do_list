@@ -1,5 +1,7 @@
 package com.example.codeclan.mytodolist.List;
 
+import com.example.codeclan.mytodolist.Category.Category;
+import com.example.codeclan.mytodolist.Category.DefaultCategories;
 import com.example.codeclan.mytodolist.Task.Categories;
 import com.example.codeclan.mytodolist.Task.Task;
 
@@ -15,17 +17,19 @@ public class List implements Serializable {
     ArrayList<Task> list;
     Task dummyTask;
     Task dummyTask2;
+    DefaultCategories categoryList;
 
     public List(){
+        categoryList = new DefaultCategories();
         list = new ArrayList<Task>();
-        dummyTask = new Task("Test", "Test details", Categories.KIDS);
+        dummyTask = new Task("Test", "Test details", categoryList.getCategory("Kids"));
         dummyTask.completeTask();
         list.add(dummyTask);
-        dummyTask2 = new Task("Test2", "Test2 details", Categories.GARDEN);
+        dummyTask2 = new Task("Test2", "Test2 details", categoryList.getCategory("Packing"));
         list.add(dummyTask2);
-        list.add(new Task("food shop", "Sainsburys", Categories.SHOPPING));
-        list.add(new Task("buy lighbulb", "halogen and 40 watt", Categories.SHOPPING));
-        list.add(new Task("build drawer unit", "kids bedroom", Categories.HOME));
+        list.add(new Task("food shop", "Sainsburys", categoryList.getCategory("Shopping")));
+        list.add(new Task("buy lighbulb", "halogen and 40 watt", categoryList.getCategory("Shopping")));
+        list.add(new Task("build drawer unit", "kids bedroom", categoryList.getCategory("Home")));
     }
 
     public void addItem(Task task){

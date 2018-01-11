@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.codeclan.mytodolist.Category.Category;
+import com.example.codeclan.mytodolist.Category.DefaultCategories;
 import com.example.codeclan.mytodolist.List.ListActivity;
 import com.example.codeclan.mytodolist.R;
 import com.google.gson.Gson;
@@ -21,8 +23,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
     EditText titleText;
     EditText detailsText;
-    EditText categoryChoice;
-    private Spinner spinner;
+//    EditText categoryChoice;
+    Spinner spinner;
+    Category newCategory;
 
 
     @Override
@@ -32,48 +35,49 @@ public class AddTaskActivity extends AppCompatActivity {
 
         titleText = findViewById(R.id.title);
         detailsText = findViewById(R.id.details);
-        categoryChoice = findViewById(R.id.add_category);
 
     }
 
     public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner_result);
     }
 
     public void addListenerOnButton() {
-        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner = (Spinner) findViewById(R.id.spinner_result);
     }
 
-//    public void onAddButtonClicked(View button){
-//        String newTitle = titleText.getText().toString();
-//        String newDetails = detailsText.getText().toString();
-//        spinner = (Spinner) findViewById(R.id.spinner);
-//        String newCategoryName = categoryChoice.getText().toString();
-//
-//        Categories newCategory = new Categories().getEnum(spinner.getTransitionName())
-//
-//        Task newTask = new Task(newTitle, newDetails, newCategory);
-//
-//        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-//        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
-//
-//        Gson gson = new Gson();
-//        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
-//        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
-//
-//        myToDoList.add(newTask);
-//
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//
-//        editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
-//        editor.apply();
-//
-//        Toast.makeText(this, "Task Added", Toast.LENGTH_LONG).show();
-//
-//        Intent intent = new Intent(this, ListActivity.class);
-//        startActivity(intent);
-//
-//    }
+    public void onAddButtonClicked(View button){
+        String newTitle = titleText.getText().toString();
+        String newDetails = detailsText.getText().toString();
+
+        spinner = (Spinner) findViewById(R.id.spinner_result);
+        String thing = (String) spinner.getSelectedItem();
+
+        DefaultCategories categoryList = new DefaultCategories();
+        newCategory = categoryList.getCategory(thing);
+
+        Task newTask = new Task(newTitle, newDetails, newCategory);
+
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        String allTasks = sharedPref.getString(getString(R.string.task_preference_key), new ArrayList<Task>().toString());
+
+        Gson gson = new Gson();
+        TypeToken<ArrayList<Task>> existingArrayList = new TypeToken<ArrayList<Task>>() {};
+        ArrayList<Task> myToDoList = gson.fromJson(allTasks, existingArrayList.getType());
+
+        myToDoList.add(newTask);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString(getString(R.string.task_preference_key), gson.toJson(myToDoList));
+        editor.apply();
+
+        Toast.makeText(this, "Task Added", Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
+
+    }
 
 }
 

@@ -15,6 +15,7 @@ public class DefaultCategories implements Serializable{
 
         public DefaultCategories(){
             defaultCategories = new ArrayList<Category>();
+            defaultCategories.add(new Category("Please Select Category", R.drawable.other));
             defaultCategories.add(new Category("Shopping", R.drawable.shopping));
             defaultCategories.add(new Category("Home", R.drawable.home));
             defaultCategories.add(new Category("Work", R.drawable.work));

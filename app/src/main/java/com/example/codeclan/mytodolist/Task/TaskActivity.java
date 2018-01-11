@@ -25,8 +25,8 @@ public class TaskActivity extends AppCompatActivity {
 
         title.setText(task.getName());
         details.setText(task.getDetails());
-        category.setText(task.getCategory().getName());
-        logo.setImageResource(task.getLogo());
+//        category.setText(task.getCategory().getName());
+//        logo.setImageResource(task.getLogo());
 
     }
 }

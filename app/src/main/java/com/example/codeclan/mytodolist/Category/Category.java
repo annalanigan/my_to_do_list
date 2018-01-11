@@ -33,5 +33,4 @@ public class Category implements Serializable{
     public void setLogo(int logo) {
         this.logo = logo;
     }
-
 }

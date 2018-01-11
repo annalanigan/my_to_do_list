@@ -20,11 +20,6 @@ import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<Task> {
 
-    private static class ViewHolder {
-        TextView txtName;
-        CheckBox checkBox;
-    }
-
     public ListAdapter(Context context, ArrayList<Task> list) {
         super(context, 0, list);
     }
@@ -42,8 +37,8 @@ public class ListAdapter extends ArrayAdapter<Task> {
         TextView title = (TextView) listItemView.findViewById(R.id.title_list);
         title.setText(currentTask.getName());
 
-        ImageView icon = (ImageView) listItemView.findViewById(R.id.icon);
-        icon.setImageResource(currentTask.getLogo());
+//        ImageView icon = (ImageView) listItemView.findViewById(R.id.icon);
+//        icon.setImageResource(currentTask.getLogo());
 
         listItemView.setTag(currentTask);
 

@@ -12,6 +12,7 @@
     <string name="spinner_prompt">Please Select a Category</string>
 
     <string-array name="category_names">
+        <item>Please Select Category</item>
         <item>Work</item>
         <item>Home</item>
         <item>Kids</item>

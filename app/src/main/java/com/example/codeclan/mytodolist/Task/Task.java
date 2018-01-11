@@ -1,5 +1,6 @@
 package com.example.codeclan.mytodolist.Task;
 
+import com.example.codeclan.mytodolist.Category.Category;
 import com.example.codeclan.mytodolist.R;
 
 import java.io.Serializable;
@@ -16,10 +17,10 @@ public class Task implements Serializable {
     private String name;
     private String details;
     private Boolean completed;
-    private Categories category;
+    private Category category;
     private Date due;
 
-    public Task(String name, String details, Categories catName){
+    public Task(String name, String details, Category catName){
         this.name = name;
         this.details = details;
         this.completed = false;
@@ -55,11 +56,11 @@ public class Task implements Serializable {
         this.completed = true;
     }
 
-    public Categories getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Categories category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
