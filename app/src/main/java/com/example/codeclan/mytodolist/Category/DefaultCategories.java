@@ -38,13 +38,13 @@ public class DefaultCategories implements Serializable{
 
         public Category getCategory(String name){
             Category result = null;
-            for (Category item : defaultCategories){
-                if (item.getName() == name){
-                    result = item;
+            for (Category singleCategory : defaultCategories){
+                if (singleCategory.getName().equals(name)){
+                    result = singleCategory;
                 }
             }
-            return result;
-        }
+        return result;
+    }
 
 
         public ArrayList<String> getCategoryNames(){

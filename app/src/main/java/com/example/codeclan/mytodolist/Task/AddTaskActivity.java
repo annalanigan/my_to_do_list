@@ -25,7 +25,6 @@ public class AddTaskActivity extends AppCompatActivity {
     EditText detailsText;
 //    EditText categoryChoice;
     Spinner spinner;
-    Category newCategory;
 
 
     @Override
@@ -54,7 +53,7 @@ public class AddTaskActivity extends AppCompatActivity {
         String thing = (String) spinner.getSelectedItem();
 
         DefaultCategories categoryList = new DefaultCategories();
-        newCategory = categoryList.getCategory(thing);
+        Category newCategory = categoryList.getCategory(thing);
 
         Task newTask = new Task(newTitle, newDetails, newCategory);
 

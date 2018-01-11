@@ -22,6 +22,6 @@ public class TestDefautCategories {
 
     @Test
     public void canGetCategoryWithString(){
-        assertNotNull(categories.getCategory("kids"));
+        assertNotNull(categories.getCategory("Kids"));
     }
 }
